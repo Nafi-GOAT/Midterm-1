@@ -8,14 +8,19 @@
 #include <iostream>
 using namespace std;
 
+// integers to prevent copiler warningas in main()
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+// DoublyLinkedList
 class DoublyLinkedList {
 private:
+    //Struct: Node
     struct Node {
-        int data;
-        Node* prev;
-        Node* next;
+        int data;   // The Value stored inside the node.
+        Node* prev; //Pointer to the previous node in the list.
+        Node* next; // Pointer to the next node in the list.
+        
+        // constructor to initialize the node with data and optional previous/next pointers
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
             prev = p;
