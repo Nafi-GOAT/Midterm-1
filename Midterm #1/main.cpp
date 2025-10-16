@@ -22,18 +22,21 @@ private:
         
         // constructor to initialize the node with data and optional previous/next pointers
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val;
-            prev = p;
-            next = n;
+            data = val; // To Store the data value
+            prev = p;   // To Set previous pointer
+            next = n;   // to set next pointer
         }
     };
-    Node* head;
-    Node* tail;
+    
+    // Pointers to the beginning and end of the linked list.
+    Node* head;  // Points to the first node
+    Node* tail;  // Points to the last node
 
 public:
+    // It's a constructor.
     DoublyLinkedList() {
-        head = nullptr;
-        tail = nullptr;
+        head = nullptr;  // Initially it'll have no nodes, so head is null
+        tail = nullptr;  // Since no Nodes initially, tail is null.
     }
 
     void insert_after(int value, int position) {
