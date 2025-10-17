@@ -206,8 +206,27 @@ public:
         delete temp;  // Delete the old tail node
     }
     
-    
+    // Other elemnts as per the requirments (as instructed)
+    void every_other_element() {
+        if (!head) {
+            cout << "List is empty." << endl;
+            return;
+        }
 
+        Node* current = head; // Start at first node
+        bool skip = false;    // Toggle to decide whether to skip or print
+
+        while (current) {
+            if (!skip)
+                cout << current->data << " "; // Print if not skipping
+            skip = !skip; // Flip between skip and print
+            current = current->next; // Move forward to next node
+        }
+
+        cout << endl;
+    }
+
+    // Frees all dynamically allocated memory.
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
