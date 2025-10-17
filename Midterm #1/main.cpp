@@ -39,22 +39,35 @@ public:
         tail = nullptr;  // Since no Nodes initially, tail is null.
     }
 
+    // insert_after()
+    //Insters a new node after a specific position in the list.
     void insert_after(int value, int position) {
+        // If user enters a negative position, invalid input
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
+        
+        // a new node will be created dynamically with the given value
         Node* newNode = new Node(value);
+        
+        // If the list is empty, new node becomes both head and tail.
         if (!head) {
             head = tail = newNode;
             return;
         }
+        
+        // temporary pointer to revert the list
         Node* temp = head;
+        
+        // No it will Move temp forward until reaching the desired position
         for (int i = 0; i < position && temp; ++i)
             temp = temp->next;
+        
+        // If position is beyond current list length, abort
         if (!temp) {
             cout << "Position exceeds list size. Node not inserted.\n";
-            delete newNode;
+            delete newNode; //  allocated free memory to prevent leaks
             return;
         }
         newNode->next = temp->next;
