@@ -70,29 +70,44 @@ public:
             delete newNode; //  allocated free memory to prevent leaks
             return;
         }
-        newNode->next = temp->next;
-        newNode->prev = temp;
+        
+        // Linking the new node into the chain
+        newNode->next = temp->next;  // Connecting newNode forward to the node after temp
+        newNode->prev = temp;        // Connect newNode backward to temp
+        
+        // Move the head pointer to the next node in the list
         if (temp->next)
             temp->next->prev = newNode;
         else
-            tail = newNode;
+            tail = newNode; // Or else will create a new node in the list
+        
+        // linked temp forward to newNode
         temp->next = newNode;
     }
-
+    
+    // delete_val()
+    // Removes the first node that matches the given value.
     void delete_val(int value) {
+        // If list is empty, nothing to delete
         if (!head) return;
+        
+        // Start from the head and look for the value
         Node* temp = head;
         while (temp && temp->data != value)
-            temp = temp->next;
+            temp = temp->next;   // Move forward until value is found or end is reached
+        // If value can't be found, then exit.
         if (!temp) return;
+        //connect the node before and after the targeted node.
         if (temp->prev)
-            temp->prev->next = temp->next;
+            temp->prev->next = temp->next; // Skip over temp from left side
         else
-            head = temp->next;
+            head = temp->next;  // If deleting the head, move head forward
         if (temp->next)
-            temp->next->prev = temp->prev;
+            temp->next->prev = temp->prev;  // // Skip temp from right side
         else
-            tail = temp->prev;
+            tail = temp->prev; // If deleting the tail, move tail backward
+        
+        // Free memory for the removed node
         delete temp;
     }
 
