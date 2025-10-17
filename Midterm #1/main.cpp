@@ -152,29 +152,31 @@ public:
         temp->next->prev = temp->prev;
         delete temp; // Delete target node
     }
-
+    
+    // adds a new node to the end of the list.
     void push_back(int v) {
-        Node* newNode = new Node(v);
+        Node* newNode = new Node(v); // creates new node with data
         if (!tail)
-            head = tail = newNode;
+            head = tail = newNode; // If list empty, new node is head and tail
         else {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
+            tail->next = newNode;  // Old tail now points to new node
+            newNode->prev = tail;  // New node points back to old tail
+            tail = newNode;        // Update tail to new node
         }
     }
-
+    //adds a new node to the front of the list.
     void push_front(int v) {
         Node* newNode = new Node(v);
         if (!head)
-            head = tail = newNode;
+            head = tail = newNode;  // Empty list case
         else {
-            newNode->next = head;
-            head->prev = newNode;
-            head = newNode;
+            newNode->next = head;   // Link new node forward to current head
+            head->prev = newNode;   // Link current head backward to new node
+            head = newNode;         // Update head pointer
         }
     }
 
+    // Removes the first node in the list.
     void pop_front() {
         if (!head) {
             cout << "List is empty." << endl;
