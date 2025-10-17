@@ -229,12 +229,13 @@ public:
     // Frees all dynamically allocated memory.
     ~DoublyLinkedList() {
         while (head) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
+            Node* temp = head; //Store pointers to current Node
+            head = head->next; // Move head to next node
+            delete temp;       // Delete previous node
         }
     }
-
+    
+    // Displays all elements from head to tail
     void print() {
         Node* current = head;
         if (!current) {
@@ -243,11 +244,12 @@ public:
         }
         while (current) {
             cout << current->data << " ";
-            current = current->next;
+            current = current->next;  // Move forward through list
         }
         cout << endl;
     }
 
+    // Displays all elements from tail to head
     void print_reverse() {
         Node* current = tail;
         if (!current) {
@@ -256,7 +258,7 @@ public:
         }
         while (current) {
             cout << current->data << " ";
-            current = current->prev;
+            current = current->prev;  // Move backward through list
         }
         cout << endl;
     }
