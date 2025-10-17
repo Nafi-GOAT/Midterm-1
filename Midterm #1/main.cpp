@@ -182,28 +182,31 @@ public:
             cout << "List is empty." << endl;
             return;
         }
-        Node* temp = head;
+        Node* temp = head;  // Keep pointer to current head
         if (head->next) {
-            head = head->next;
+            head = head->next;  // Move head forward
             head->prev = nullptr;
         } else
-            head = tail = nullptr;
-        delete temp;
+            head = tail = nullptr; // Only one node existed
+        delete temp;// Delete old head
     }
-
+// Removes the last node in the list.
     void pop_back() {
         if (!tail) {
             cout << "List is empty." << endl;
             return;
         }
-        Node* temp = tail;
+        Node* temp = tail;  // Keep pointer to current tail
         if (tail->prev) {
-            tail = tail->prev;
-            tail->next = nullptr;
-        } else
-            head = tail = nullptr;
-        delete temp;
+            tail = tail->prev;  // Move tail backward
+            tail->next = nullptr;  // Disconnect old tail
+        } else {
+            head = tail = nullptr; // Only one node existed
+        }
+        delete temp;  // Delete the old tail node
     }
+    
+    
 
     ~DoublyLinkedList() {
         while (head) {
