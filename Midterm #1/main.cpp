@@ -265,6 +265,23 @@ public:
 };
 
 int main() {
+    
+    DoublyLinkedList list; // Create an empty doubly linked list
+
+        // Add several nodes to demonstrate operations
+        list.push_back(10);
+        list.push_back(20);
+        list.push_back(30);
+        list.push_back(40);
+        list.push_back(50);
+
+        cout << "Full list: ";
+        list.print(); // Output all elements normally
+
+        cout << "Every other element: ";
+        list.every_other_element(); // Output every 2nd node skipped
+
+        // Dummy line to use constants and avoid compiler warning
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;
     return 0;
 }
