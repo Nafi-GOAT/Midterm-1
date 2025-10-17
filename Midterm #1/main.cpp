@@ -110,7 +110,7 @@ public:
         // Free memory for the removed node
         delete temp;
     }
-
+    // Deletes the node at a given position (1-based index)
     void delete_pos(int pos) {
         if (!head) {
             cout << "List is empty." << endl;
@@ -120,25 +120,37 @@ public:
             cout << "Position must be > 0." << endl;
             return;
         }
+        
+        // Starts at the head
         Node* temp = head;
+        
+        // Moving forward to the given position
         for (int i = 1; i < pos && temp; i++) {
             temp = temp->next;
         }
+        
+        // If position is valid.
         if (!temp) {
             cout << "Position doesn't exist." << endl;
             return;
         }
+        
+        // Handle first node deletion
         if (temp == head) {
             pop_front();
             return;
         }
+        
+        // Handle last node deletion
         if (temp == tail) {
             pop_back();
             return;
         }
+        
+        // Reconnect surrounding nodes
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
-        delete temp;
+        delete temp; // Delete target node
     }
 
     void push_back(int v) {
