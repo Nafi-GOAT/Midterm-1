@@ -2,7 +2,8 @@
 //  main.cpp
 //  Midterm #1
 //
-//  Created by Nafi on 10/16/25.
+//  COMSC 210||Mehraj Hasan NAfi
+//IDE used:Xcode.
 //
 
 #include <iostream>
@@ -29,7 +30,7 @@ private:
     };
     
     // Pointers to the beginning and end of the linked list.
-    Node* head;  // Points to the first node
+    Node* head;  // Points to the first head
     Node* tail;  // Points to the last node
 
 public:
@@ -281,8 +282,16 @@ int main() {
         cout << "Every other element: ";
         list.every_other_element(); // Output every 2nd node skipped
 
-        // Dummy line to use constants and avoid compiler warning
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;
+
+    // Display all elements
+    list.print();
+
+    // Show list in reverse
+    list.print_reverse();
+
+    // Demonstrate the every_other_element() method
+    list.every_other_element();
+    cout << "\n(Assignment constants output) " << MIN_NR + MIN_LS + MAX_NR + MAX_LS;
     return 0;
 }
 
